@@ -3,7 +3,7 @@
 class REST_Service extends Controller {
 
 	// this method displays a specific Task
-	function index( $params ) {
+	function crud( $params ) {
 		
 		// redirect to the proper method
 		switch($_SERVER['REQUEST_METHOD']){
