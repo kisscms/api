@@ -2,6 +2,8 @@
 
 class REST_Service extends Controller {
 
+	public $model;
+	
 	// this method displays a specific Task
 	function crud( $params ) {
 		
