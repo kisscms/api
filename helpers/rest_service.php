@@ -11,7 +11,7 @@ class REST_Service extends Controller {
 				$this->create( $params );
 			break;
 			case "GET": 
-				$this->retrieve( $params );
+				$this->read( $params );
 			break;
 			case "PUT": 
 				$this->update( $params );
@@ -29,7 +29,7 @@ class REST_Service extends Controller {
 		
 	}
 	
-	function retrieve( $params ) {
+	function read( $params ) {
 		
 	}
 	
