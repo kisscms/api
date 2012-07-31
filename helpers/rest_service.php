@@ -21,6 +21,8 @@ class REST_Service extends Controller {
 			case "DELETE": 
 				$this->delete( $params );
 			break;
+			default:
+				header('HTTP/1.1 405 Method Not Allowed');
 		}
 		
 		// in any case, render the output
@@ -46,6 +48,14 @@ class REST_Service extends Controller {
 	
 	function render() {
 		
+		// set the right header
+		if (isset($_SERVER['HTTP_ACCEPT']) &&
+            (strpos($_SERVER['HTTP_ACCEPT'], 'application/json') !== false)) {
+            header('Content-type: application/json');
+        } else {
+            header('Content-type: text/plain');
+        }
+        
 		// display the data in json format
 		View::do_dump( getPath('views/json.php'), $this->data );
 	}
