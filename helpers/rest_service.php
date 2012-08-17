@@ -52,7 +52,7 @@ class REST_Service extends Controller {
 	}
 	
 	
-	protected function render() {
+	function render() {
 		
 		// set the right header
 		if (isset($_SERVER['HTTP_ACCEPT']) &&
