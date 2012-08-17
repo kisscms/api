@@ -2,10 +2,16 @@
 
 class REST_Service extends Controller {
 
-	public $model;
+	protected $api;
+	protected $model;
+	
+	function index( $params ) {
+		// by default no index available
+		exit;
+	}
 	
 	// this method displays a specific Task
-	function crud( $params ) {
+	protected function crud( $params ) {
 		
 		// redirect to the proper method
 		switch($_SERVER['REQUEST_METHOD']){
@@ -29,24 +35,24 @@ class REST_Service extends Controller {
 		$this->render();
 	}
 	
-	function create( $params ) {
+	protected function create( $params ) {
 		
 	}
 	
-	function read( $params ) {
+	protected function read( $params ) {
 		
 	}
 	
-	function update( $params ) {
+	protected function update( $params ) {
 		
 	}
 	
-	function delete( $params ) {
+	protected function delete( $params ) {
 		
 	}
 	
 	
-	function render() {
+	protected function render() {
 		
 		// set the right header
 		if (isset($_SERVER['HTTP_ACCEPT']) &&
