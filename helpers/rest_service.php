@@ -53,7 +53,7 @@ class REST_Service extends Controller {
 			}
 		}
 		// remove the parent array if only one dataset
-		$this->data = ( count($this->db) > 1 ) ? $data: array_shift($data);
+		$this->data = ( count($data) == 1 ) ? array_shift($data) : $data;
 		// debug
 		//error_log( print_r($this->data,1) , 3, "log.txt");
 	}
@@ -71,7 +71,7 @@ class REST_Service extends Controller {
 			}
 		}
 		// remove the parent array if only one dataset
-		$this->data = ( count($this->db) > 1 ) ? $data: array_shift($data);
+		$this->data = ( count($data) == 1 ) ? array_shift($data) : $data;
 		// debug
 		//error_log( print_r($this->data,1) , 3, "log.txt");
 	}
@@ -91,7 +91,7 @@ class REST_Service extends Controller {
 			}
 		}
 		// remove the parent array if only one dataset
-		$this->data = ( count($this->db) > 1 ) ? $data: array_shift($data);
+		$this->data = ( count($data) == 1 ) ? array_shift($data) : $data;
 		// debug
 		//error_log( print_r($this->data,1) , 3, "log.txt");
 	}
@@ -111,7 +111,7 @@ class REST_Service extends Controller {
 			}
 		}
 		// remove the parent array if only one dataset
-		$this->data = ( count($this->db) > 1 ) ? $data: array_shift($data);
+		$this->data = ( count($data) == 1 ) ? array_shift($data) : $data;
 		// debug
 		//error_log( print_r($this->data,1) , 3, "log.txt");
 	}
