@@ -4,6 +4,7 @@ class REST_Service extends Controller {
 
 	protected $api;
 	protected $model;
+	protected $params;
 	
 	function index( $params ) {
 		// by default no index available
@@ -130,6 +131,23 @@ class REST_Service extends Controller {
 		View::do_dump( getPath('views/json.php'), $this->data );
 	}
 
+	// Helpers
+	// find the id from the params array
+	protected function findID($params){
+		
+		if( is_string($params) ){
+			// we assume the only param is the id
+			$id = $params;
+			// reset params
+			$params = array();
+			$params['id'] = $id;
+		} else if( empty($params['id']) ) {
+			$params['id'] = NULL;
+		}
+		// save for later...
+		$this->params = $params;
+		return $params;
+	}
 
 }
 
