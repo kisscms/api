@@ -43,8 +43,8 @@ class REST_Service extends Controller {
 		
 		$data = array();
 		//for each db initiated...
-		foreach( $this->db as $name => $db){
-			$action = "create".ucfirst($name);
+		foreach( $this->db as $type => $db){
+			$action = "create".ucfirst($type);
 			if( method_exists($this, $action) ) { 
 				$result = $this->$action($params);
 				// remove the parent array if only one dataset
@@ -61,8 +61,8 @@ class REST_Service extends Controller {
 		
 		$data = array();
 		//for each db initiated...
-		foreach( $this->db as $name => $db){
-			$action = "read".ucfirst($name);
+		foreach( $this->db as $type => $db){
+			$action = "read".ucfirst($type);
 			if( method_exists($this, $action) ) { 
 				$result = $this->$action($params);
 				// remove the parent array if only one dataset
@@ -81,8 +81,8 @@ class REST_Service extends Controller {
 		
 		$data = array();
 		//for each db initiated...
-		foreach( $this->db as $name => $db){
-			$action = "update".ucfirst($name);
+		foreach( $this->db as $type => $db){
+			$action = "update".ucfirst($type);
 			if( method_exists($this, $action) ) { 
 				$result = $this->$action($params);
 				// remove the parent array if only one dataset
@@ -101,8 +101,8 @@ class REST_Service extends Controller {
 		
 		$data = array();
 		//for each db initiated...
-		foreach( $this->db as $name => $db){
-			$action = "delete".ucfirst($name);
+		foreach( $this->db as $type => $db){
+			$action = "delete".ucfirst($type);
 			if( method_exists($this, $action) ) { 
 				$result = $this->$action($params);
 				// remove the parent array if only one dataset
