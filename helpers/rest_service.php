@@ -12,6 +12,8 @@ class REST_Service extends Controller {
 	
 	// this method displays a specific Task
 	protected function crud( $params ) {
+		// reset data
+		$this->data = array();
 		
 		// redirect to the proper method
 		switch($_SERVER['REQUEST_METHOD']){
@@ -36,19 +38,81 @@ class REST_Service extends Controller {
 	}
 	
 	protected function create( $params ) {
+		// method is off limits for not logged in users...
+		if( empty( $_SESSION['user'])  ) exit;
 		
+		$data = array();
+		//for each db initiated...
+		foreach( $this->db as $name => $db){
+			$action = "create".ucfirst($name);
+			if( method_exists($this, $action) ) { 
+				$result = $this->$action($params);
+				// remove the parent array if only one dataset
+				$data[$type] = ( count($result) == 1 ) ? array_shift($result) : $result;
+			}
+		}
+		// remove the parent array if only one dataset
+		$this->data = ( count($this->db) > 1 ) ? $data: array_shift($data);
+		// debug
+		//error_log( print_r($this->data,1) , 3, "log.txt");
 	}
 	
 	protected function read( $params ) {
 		
+		$data = array();
+		//for each db initiated...
+		foreach( $this->db as $name => $db){
+			$action = "read".ucfirst($name);
+			if( method_exists($this, $action) ) { 
+				$result = $this->$action($params);
+				// remove the parent array if only one dataset
+				$data[$type] = ( count($result) == 1 ) ? array_shift($result) : $result;
+			}
+		}
+		// remove the parent array if only one dataset
+		$this->data = ( count($this->db) > 1 ) ? $data: array_shift($data);
+		// debug
+		//error_log( print_r($this->data,1) , 3, "log.txt");
 	}
 	
 	protected function update( $params ) {
+		// method is off limits for not logged in users...
+		if( empty( $_SESSION['user'])  ) exit;
 		
+		$data = array();
+		//for each db initiated...
+		foreach( $this->db as $name => $db){
+			$action = "update".ucfirst($name);
+			if( method_exists($this, $action) ) { 
+				$result = $this->$action($params);
+				// remove the parent array if only one dataset
+				$data[$type] = ( count($result) == 1 ) ? array_shift($result) : $result;
+			}
+		}
+		// remove the parent array if only one dataset
+		$this->data = ( count($this->db) > 1 ) ? $data: array_shift($data);
+		// debug
+		//error_log( print_r($this->data,1) , 3, "log.txt");
 	}
 	
 	protected function delete( $params ) {
+		// method is off limits for not logged in users...
+		if( empty( $_SESSION['user'])  ) exit;
 		
+		$data = array();
+		//for each db initiated...
+		foreach( $this->db as $name => $db){
+			$action = "delete".ucfirst($name);
+			if( method_exists($this, $action) ) { 
+				$result = $this->$action($params);
+				// remove the parent array if only one dataset
+				$data[$type] = ( count($result) == 1 ) ? array_shift($result) : $result;
+			}
+		}
+		// remove the parent array if only one dataset
+		$this->data = ( count($this->db) > 1 ) ? $data: array_shift($data);
+		// debug
+		//error_log( print_r($this->data,1) , 3, "log.txt");
 	}
 	
 	
