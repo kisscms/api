@@ -142,7 +142,7 @@ class REST_Service extends Controller {
 			$params = array();
 			$params['id'] = $id;
 		} else if( empty($params['id']) ) {
-			$params['id'] = NULL;
+			$params['id'] = false;
 		}
 		// save for later...
 		$this->params = $params;
