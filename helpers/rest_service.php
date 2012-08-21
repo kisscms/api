@@ -135,15 +135,23 @@ class REST_Service extends Controller {
 	// find the id from the params array
 	protected function findID($params){
 		
-		if( is_string($params) ){
+		if( !$params || empty($params) ){
+			// reset params
+			$params = array();
+			$params['id'] = false;
+		} else if( is_string($params) ){
 			// we assume the only param is the id
 			$id = $params;
 			// reset params
 			$params = array();
 			$params['id'] = $id;
 		} else if( empty($params['id']) ) {
-			$params['id'] = false;
+			// reset the index of the params
+			reset($params);
+			//if the first key is '0' we assume it is an id sent as part of the url
+			$params['id'] = ( !key($params) ) ? array_shift($params) :  false;
 		}
+		
 		// save for later...
 		$this->params = $params;
 		return $params;
