@@ -48,6 +48,8 @@ class REST_Service extends Controller {
 			$action = "create".ucfirst($type);
 			if( method_exists($this, $action) ) { 
 				$result = $this->$action($params);
+				// stop if we got a negative response
+				if( !$result ) continue;
 				// remove the parent array if only one dataset
 				$data[$type] = ( count($result) == 1 ) ? array_shift($result) : $result;
 			}
@@ -66,6 +68,8 @@ class REST_Service extends Controller {
 			$action = "read".ucfirst($type);
 			if( method_exists($this, $action) ) { 
 				$result = $this->$action($params);
+				// stop if we got a negative response
+				if( !$result ) continue;
 				// remove the parent array if only one dataset
 				$data[$type] = ( count($result) == 1 ) ? array_shift($result) : $result;
 			}
@@ -86,6 +90,8 @@ class REST_Service extends Controller {
 			$action = "update".ucfirst($type);
 			if( method_exists($this, $action) ) { 
 				$result = $this->$action($params);
+				// stop if we got a negative response
+				if( !$result ) continue;
 				// remove the parent array if only one dataset
 				$data[$type] = ( count($result) == 1 ) ? array_shift($result) : $result;
 			}
@@ -106,6 +112,8 @@ class REST_Service extends Controller {
 			$action = "delete".ucfirst($type);
 			if( method_exists($this, $action) ) { 
 				$result = $this->$action($params);
+				// stop if we got a negative response
+				if( !$result ) continue;
 				// remove the parent array if only one dataset
 				$data[$type] = ( count($result) == 1 ) ? array_shift($result) : $result;
 			}
